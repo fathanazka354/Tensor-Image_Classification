@@ -2,7 +2,6 @@ package in.notyouraveragedev.tensor_image_classification.classifier;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -87,10 +86,9 @@ public class ImageClassifier {
         /*
          * The loaded TensorFlow Lite model.
          */
-        MappedByteBuffer classifierModel = FileUtil.loadMappedFile(activity,
-                "mobilenet_v1_1.0_224_quant.tflite");
+        MappedByteBuffer classifierModel = FileUtil.loadMappedFile(activity, "model.tflite");
         // Loads labels out from the label file.
-        labels = FileUtil.loadLabels(activity, "labels_mobilenet_quant_v1_224.txt");
+        labels = FileUtil.loadLabels(activity, "labels.txt");
 
         tensorClassifier = new Interpreter(classifierModel, null);
 
